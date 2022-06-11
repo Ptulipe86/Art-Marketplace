@@ -13,17 +13,20 @@ express()
   // Any requests for static files will go into the public folder
   .use(express.static("public"))
 
-  //* Endpoints //
+  //*/--------------------          Endpoints          -------------------------///
   .get('/', (req, res) => { res.send('Hello World');})
+
+
 
 
 
 
   
 
-  //* End of Endpoints//
 
-  //! this is our catch all endpoint.
+  //*/--------------------          Endpoints          -------------------------///
+
+  //? this is our catch all endpoint.
   .get("*", (req, res) => {
     res.status(404).json({
     status: 404,
