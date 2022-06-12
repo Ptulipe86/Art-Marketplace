@@ -1,7 +1,8 @@
 {
-  "name": "backend",
+  "name": "node-art-martketplace",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "This is the backend app for Art Marketplace",
+  "main": "server.js",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.1",
@@ -14,6 +15,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
+    "start": "node server.js",
     "dev:backend": "nodemon server.js"
   }
 }

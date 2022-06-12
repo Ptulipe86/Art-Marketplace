@@ -5,10 +5,10 @@ export default createGlobalStyle`
 :root {
   --color-cedar: #3E1D13;
   --color-mediumTurquoise: #32CED5;
-  //instead of white//
   --color-alabaster:#FBFBFC;
   --color-sunsetOrange: #FD5E53;
   --font-heading: 'Bebas Neue', cursive;
+  --font-body: 'Amiri', serif;
 }
 
 *, *::before, *::after {
@@ -21,7 +21,7 @@ html, body {
   height: 100%;
 }
 body {
-  /* font-family: ; */
+  font-family: var(--font-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -32,9 +32,19 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
-input, button, textarea, select {
+input,textarea, select {
   font: inherit;
   overflow-wrap: break-word;
+}
+button{
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  margin: 1px;
+  &:hover{
+    background-color: var(--color-mediumTurquoise);
+    color: var(--color-cedar);
+  }
 }
 h1,h2{
   overflow-wrap: break-word;
