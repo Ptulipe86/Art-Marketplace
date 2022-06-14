@@ -2,6 +2,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import demo1 from "../assets/demo1.jpg";
 import demo2 from "../assets/demo2.jpeg";
 import demo3 from "../assets/personal_collection.jpg";
+import { GiTrafficCone } from "react-icons/gi";
+import { IconContext } from 'react-icons/lib';
 import styled from "styled-components";
 
 const HeroSlider = () => {
@@ -45,7 +47,10 @@ const HeroSlider = () => {
             <MiniWrapper>
               <h2>You can be a curator!</h2>
               <p>From creating your custom exhibit, so you can then show off your favorite artists. Show off your favorite purchased pieces, as well.</p>
-              <p>Register and sign in to find out more.</p>
+              <IconContext.Provider value={{color: "var(--color-sunsetOrange)", size:"2em"}}>
+                <span>Under construction.. <GiTrafficCone/></span>
+              </IconContext.Provider>
+              
             </MiniWrapper>
           </Carousel.Caption>
         </Carousel.Item>
@@ -65,6 +70,12 @@ const MiniWrapper = styled.div`
   background-color: RGBA(62,29,19,0.70);
   border: 4px inset #32ced5;
   border-radius: 5px;
+  span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
 `;
 
 export default HeroSlider;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import GlobalStyles from "./Utilities/GlobalStyles";
 import Homepage from "./Routes/Homepage";
@@ -8,8 +7,10 @@ import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Artist from "./Routes/Artist";
 import Purchaser from "./Routes/Purchaser";
-import Curator from "./Routes/Curator";
+// import Curator from "./Routes/Curator";
 import ViewArt from "./Routes/ViewArt";
+import RegistrationForm from "./Forms/RegistrationForm";
+import SignIn from "./Forms/SignIn";
 
 const App = () => {
   return (
@@ -28,11 +29,17 @@ const App = () => {
           <Route exact path="/purchaser">
             <Purchaser />
           </Route>
-          <Route exact path="/curator">
+          {/* <Route exact path="/curator">
             <Curator />
-          </Route>
+          </Route> */}
           <Route exact path="/view-art">
             <ViewArt />
+          </Route>
+          <Route exact path="/register">
+            <RegistrationForm />
+          </Route>
+          <Route exact path="/signIn">
+            <SignIn />
           </Route>
         </Switch>      
       </Main>
@@ -44,6 +51,8 @@ const App = () => {
 const Main = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  height: 90vh;
 `;
 
 export default App;

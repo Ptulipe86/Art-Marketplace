@@ -9,9 +9,13 @@ const Header = () => {
         <h1>The Art Place</h1>
       </StyledLink>      
       <EndWrapper>
-        <SearchBarWrapper><FcSearch/><input placeholder="Search artists,gallery,etc. "/></SearchBarWrapper>
-        <button>Log in</button>
-        <button>Sign Up</button>
+        <SearchBarWrapper hidden><FcSearch/><input placeholder="Search artists,gallery,etc... "/></SearchBarWrapper>
+        <StyledLink to="/signIn">
+          <button>Log in</button>
+        </StyledLink>
+        <StyledLink to="/register">
+          <button>Sign Up</button>
+        </StyledLink>       
       </EndWrapper> 
     </Wrapper>
   )
@@ -29,8 +33,8 @@ const Wrapper = styled.div`
     color: white;
     padding: 2px;
     &:hover{
-    color: var(--color-sunsetOrange);
-    border: 5px inset #32ced5;
+    color: var(--color-mediumTurquoise);
+    border: 2px inset var(--color-sunsetOrange);
     border-radius: 5px;
     height: 55px;
   }
@@ -50,6 +54,7 @@ const SearchBarWrapper = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  margin: 5px;
 `; 
 
 export default Header

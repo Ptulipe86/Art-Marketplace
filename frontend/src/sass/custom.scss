@@ -1,0 +1,15 @@
+//custom colors
+$primary: #32CED5;
+
+//nav colors
+  $nav-tabs-border-color: #32CED5;
+  //when active
+  $nav-tabs-link-active-border-color: #32CED5; 
+  $nav-tabs-link-active-bg: rgba(253,94,83,0.40);
+
+
+
+
+//! import bootstrap sass always at the bottom of sass file for compiling, add it to top of app ( index.js) !//
+
+@import '~bootstrap/scss/bootstrap.scss';

@@ -7,35 +7,35 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <Main>
+    <Main hidden>
       <h2>Welcome!</h2>
       <Wrapper>
         <UsersWrapper>
           <ArtistButtonsWrapper>
-            <Link to="/artist">
+            <StyledLink to="/artist">
               <button><FaRegUser/>Profile</button>
-            </Link>
-            <Link>
+            </StyledLink>
+            <StyledLink>
               <button><MdAttachMoney/>Sell</button>
-            </Link>
-            <Link>
+            </StyledLink>
+            <StyledLink>
               <button><FaSearchDollar/>Sales</button>
-            </Link>
+            </StyledLink>
           </ArtistButtonsWrapper>
 
           <BuyersButtonsWrapper>
-            <Link to="/purchaser">
+            <StyledLink to="/purchaser">
               <button><GiShoppingCart/>Purchase</button>
-            </Link>
-            <Link to="/view-art">
+            </StyledLink>
+            <StyledLink to="/view-art">
               <button><MdImageSearch/>View Art</button>
-            </Link>
+            </StyledLink>
           </BuyersButtonsWrapper>
         </UsersWrapper>
 
-        <Link to="/curator">
-          <CuratorButton>Curator</CuratorButton>
-        </Link>        
+        <StyledLink to="/curator">
+          <CuratorButton disabled>Curator</CuratorButton>
+        </StyledLink>        
       </Wrapper>
     </Main>
   );
@@ -45,10 +45,11 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   min-width: fit-content;
-  max-width: 10vw;
+  width: 100%;
+  max-width: 5vw;
   min-height: fit-content;
-  max-height: 90vh;
-  background: radial-gradient(circle, rgba(251,251,252,1) 5%, rgba(253,94,83,1) 39%, rgba(50,206,213,1) 78%, rgba(62,29,19,1) 97%);
+  max-height: 100%;
+  background: var(--gradient);
   border-right: 5px outset var(--color-cedar);
   color:white;
 `
@@ -72,6 +73,10 @@ const ArtistButtonsWrapper = styled.div`
 const BuyersButtonsWrapper = styled.div`
   display: inherit;
   flex-direction: inherit;
+`;
+
+const StyledLink = styled(Link)`
+  margin: 0px 3px 0px 2px;
 `;
 
 const CuratorButton = styled.button`
