@@ -15,10 +15,10 @@ const Sidebar = () => {
             <StyledLink to="/artist">
               <button><FaRegUser/>Profile</button>
             </StyledLink>
-            <StyledLink>
+            <StyledLink to="/sell">
               <button><MdAttachMoney/>Sell</button>
             </StyledLink>
-            <StyledLink>
+            <StyledLink to="/sales">
               <button><FaSearchDollar/>Sales</button>
             </StyledLink>
           </ArtistButtonsWrapper>
@@ -31,11 +31,7 @@ const Sidebar = () => {
               <button><MdImageSearch/>View Art</button>
             </StyledLink>
           </BuyersButtonsWrapper>
-        </UsersWrapper>
-
-        <StyledLink to="/curator">
-          <CuratorButton disabled>Curator</CuratorButton>
-        </StyledLink>        
+        </UsersWrapper>       
       </Wrapper>
     </Main>
   );
@@ -79,9 +75,5 @@ const StyledLink = styled(Link)`
   margin: 0px 3px 0px 2px;
 `;
 
-const CuratorButton = styled.button`
-  position: relative;
-  bottom: 50px;
-`;
 
 export default Sidebar

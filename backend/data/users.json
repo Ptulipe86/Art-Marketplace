@@ -1,0 +1,29 @@
+[
+  {
+    "type" : "artist",
+    "givenName" : "Ronald",
+    "surname" : "Mcdonald",
+    "email" : "romcdo@mcdoogles.ca",
+    "password" : "ronron08",
+    "avatarUrl" : "/frontend/src/components/assets/user profile pics/ronald.jpg",
+    "dateCreated": "2022-06-15, 10:03am",
+    "lastModified": "2022-06-15, 10:05am"
+  },
+  {
+    "type" : "artist",
+    "givenName" : "Ronald",
+    "surname" : "Mcdonald",
+    "email" : "romcdo@mcdoogles.ca",
+    "password" : "ronron08",
+    "avatarUrl" : "/frontend/src/components/assets/user profile pics/ronald.jpg"
+
+  },
+  {
+    "type" : "buyer",
+    "givenName" : "Boi",
+    "surname" : "Big",
+    "email" : "howbig@isbig.ca",
+    "password" : "bigboi08",
+    "avatarUrl" : "/frontend/src/components/assets/user profile pics/usertest.jpg"
+  }
+]

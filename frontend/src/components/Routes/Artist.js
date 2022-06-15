@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import user from "../assets/usertest.jpg"
+import user from "../assets/user profile pics/usertext.jpg"
 import TabGroup from "../profile components/TabGroup";
 
 const ArtistProfile = () => {
@@ -59,10 +59,11 @@ const ProfileAvatar = styled.img`
   border: 2px solid black;
 `;
 
-const BioWrapper = styled.div`
-  
+const BioWrapper = styled.div`  
   width: 30%;
   min-width: 50%;
-`
+`;
+
+
 
 export default ArtistProfile

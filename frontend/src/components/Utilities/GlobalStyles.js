@@ -9,7 +9,7 @@ export default createGlobalStyle`
   --color-sunsetOrange: #FD5E53;
   --font-heading: 'Bebas Neue', cursive;
   --font-body: 'Amiri', serif;
-  --gradient: radial-gradient(circle, rgba(251,251,252,1) 5%, rgba(253,94,83,1) 39%, rgba(50,206,213,1) 78%, rgba(62,29,19,1) 97%);
+  --gradient: radial-gradient(circle, rgba(251,251,252,1) 5%, rgba(253,94,83,0.6474964985994398) 39%, rgba(50,206,213,1) 78%, rgba(62,29,19,1) 97%);
 }
 
 *, *::before, *::after {

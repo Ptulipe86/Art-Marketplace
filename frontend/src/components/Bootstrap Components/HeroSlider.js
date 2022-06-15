@@ -18,7 +18,11 @@ const HeroSlider = () => {
           <Carousel.Caption>
             <MiniWrapper>
               <h2>The all in one Art Marketplace</h2>
-              <p>Looking for a unique exhibit for your artwork? Can't afford a grand hall to display your collection? Look no further, we can host your pieces, while you can set the price, and view all your sold merchandise.</p>
+              <p>Looking for a unique exhibit for your 
+                  artwork? Can't afford a grand hall to 
+                    display your collection? Look no further.
+                      We can host your pieces, while you can set the price, 
+                        and view all your sold merchandise.</p>
               <p>Register now and then sign in to start!</p>
             </MiniWrapper>
           </Carousel.Caption>
@@ -32,7 +36,10 @@ const HeroSlider = () => {
           <Carousel.Caption>
             <MiniWrapper>
               <h2>Searching for unique art?</h2>
-              <p>Our artists are here to help exceed those needs. Hundreds of pieces to look at. Find your new favorite artist. Add it your favorite piece to the shopping cart. And your good to go!</p>
+              <p>Our artists are here to help exceed
+                 those needs. Hundreds of pieces to look at.
+                  Find your new favorite artist. Add your favorite 
+                  piece to the shopping cart. And your good to go!</p>
               <p>Register now and then sign in to start!</p>
             </MiniWrapper>
           </Carousel.Caption>
@@ -45,8 +52,8 @@ const HeroSlider = () => {
           />
           <Carousel.Caption>
             <MiniWrapper>
-              <h2>You can be a curator!</h2>
-              <p>From creating your custom exhibit, so you can then show off your favorite artists. Show off your favorite purchased pieces, as well.</p>
+              <h2>Gallery</h2>
+              <p></p>
               <IconContext.Provider value={{color: "var(--color-sunsetOrange)", size:"2em"}}>
                 <span>Under construction.. <GiTrafficCone/></span>
               </IconContext.Provider>

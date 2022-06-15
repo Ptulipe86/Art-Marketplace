@@ -18,12 +18,6 @@ express()
 
 
 
-
-
-
-  
-
-
   //*/--------------------          Endpoints          -------------------------///
 
   //? this is our catch all endpoint.

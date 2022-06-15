@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Artist from "./Routes/Artist";
 import Purchaser from "./Routes/Purchaser";
-// import Curator from "./Routes/Curator";
+
 import ViewArt from "./Routes/ViewArt";
 import RegistrationForm from "./Forms/RegistrationForm";
 import SignIn from "./Forms/SignIn";
@@ -23,6 +23,9 @@ const App = () => {
           <Route exact path="/">
             <Homepage />
           </Route>
+          <Route exact path="/view-art">
+            <ViewArt />
+          </Route>
           <Route exact path="/artist">
             <Artist />
           </Route>
@@ -32,9 +35,6 @@ const App = () => {
           {/* <Route exact path="/curator">
             <Curator />
           </Route> */}
-          <Route exact path="/view-art">
-            <ViewArt />
-          </Route>
           <Route exact path="/register">
             <RegistrationForm />
           </Route>

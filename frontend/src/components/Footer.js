@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Wrapper>
       <h2>Contact Info</h2>
-      <p>Puchasing of the app.</p> 
+      <p>Add info</p> 
     </Wrapper>
   )
 }

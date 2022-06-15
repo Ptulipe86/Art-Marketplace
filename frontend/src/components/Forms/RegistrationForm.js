@@ -68,7 +68,7 @@ export const MinorWrapper = styled.div`
   border-radius: 5px;
   padding: 4px;
   width: 35vw;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(62, 29, 19, 0.2);
 `;
 
 export const FormContent = styled.div`
@@ -78,7 +78,8 @@ export const FormContent = styled.div`
 
 const FormGroup = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
   > div {
     flex: 1 0 auto;

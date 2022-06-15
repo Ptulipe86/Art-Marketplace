@@ -1,9 +1,14 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 import {FormWrapper, MinorWrapper, FormContent, StyledInputs, SubmitButton} from "./RegistrationForm"
 
 const Signin = () => {
+  const ConfirmSignIn = (event) => {
+    event.preventDefault();
+    //todo fetch post 
+  }
+
     return(
-      <FormWrapper>
+      <FormWrapper onSubmit={ConfirmSignIn}>
         <MinorWrapper>
           <h2>Sign in</h2>
           <FormContent>            

@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { FcSearch } from "react-icons/fc";
+import { FcSearch } from "react-icons/fc"
+
 import { Link } from "react-router-dom";
+import Logout from "./Utilities/Logout";
+
 
 const Header = () => {
   return (
@@ -9,13 +12,16 @@ const Header = () => {
         <h1>The Art Place</h1>
       </StyledLink>      
       <EndWrapper>
-        <SearchBarWrapper hidden><FcSearch/><input placeholder="Search artists,gallery,etc... "/></SearchBarWrapper>
+        <SearchBarWrapper hidden>
+          <FcSearch/><input placeholder="Search artists,gallery,etc... "/>
+        </SearchBarWrapper>
         <StyledLink to="/signIn">
           <button>Log in</button>
         </StyledLink>
         <StyledLink to="/register">
           <button>Sign Up</button>
-        </StyledLink>       
+        </StyledLink>        
+          <Logout />                     
       </EndWrapper> 
     </Wrapper>
   )
