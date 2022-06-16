@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import user from "../assets/user profile pics/usertext.jpg"
-import TabGroup from "../profile components/TabGroup";
+import user from "../assets/user profile pics/bigguy.jpg"
+import TabGroup from "../Profile components/TabGroup";
 
 const ArtistProfile = () => {
   return (

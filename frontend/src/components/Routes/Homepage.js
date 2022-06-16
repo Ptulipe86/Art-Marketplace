@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import HeroSlider from "../Bootstrap Components/HeroSlider";
+import HeroSlider from "../bootstrap Components/HeroSlider";
 
 const Homepage = () => {
   return (

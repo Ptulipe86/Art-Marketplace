@@ -2,6 +2,8 @@
 
 var express = require('express');
 const morgan = require("morgan");
+const {handleSignUp} = require("./handlers")
+
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -14,8 +16,7 @@ express()
   .use(express.static("public"))
 
   //*/--------------------          Endpoints          -------------------------///
-  .get('/', (req, res) => { res.send('Hello World');})
-
+  .post("/signUp", handleSignUp)
 
 
   //*/--------------------          Endpoints          -------------------------///

@@ -1,25 +1,56 @@
 // import styled from "styled-components";
-import {FormWrapper, MinorWrapper, FormContent, StyledInputs, SubmitButton} from "./RegistrationForm"
+import {FormWrapper, MinorWrapper, FormContent, StyledInputs, SubmitButton,FormGroup} from "./RegistrationForm";
+import { useRef, useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Signin = () => {
-  const ConfirmSignIn = (event) => {
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  
+
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  
+
+  // useEffect(() => {
+  //   userRef.current.focus();
+  // }, [])
+
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     //todo fetch post 
   }
 
     return(
-      <FormWrapper onSubmit={ConfirmSignIn}>
+      <FormWrapper onSubmit={handleSubmit}>
         <MinorWrapper>
           <h2>Sign in</h2>
-          <FormContent>            
-              <StyledInputs name="email" type="email" placeholder="email @" required/>
-                <StyledInputs name="password" type="password" placeholder="Password" minLength="8"
+          <FormContent>
+            <FormGroup>
+              <label htmlFor="email">Email:</label>            
+              <StyledInputs 
+                id="email"                
+                type="email" 
+                placeholder="email @" 
+                value={user}
                 required
               />
-              <StyledInputs name="confirmPass" type="password" placeholder="Confirm Password" minLength="8" required
-              />              
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="passwordSignin">Password:</label>
+              <StyledInputs 
+                id="passwordSignin"
+                type="password" 
+                placeholder="Password" 
+                minLength="8"
+                required
+              />
+            </FormGroup>             
           </FormContent>
-          <SubmitButton type="submit" disabled>Submit</SubmitButton>
+          <SubmitButton type="submit" disabled>Log in</SubmitButton>
         </MinorWrapper>        
       </FormWrapper>
     )

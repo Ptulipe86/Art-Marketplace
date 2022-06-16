@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyles from "./Utilities/GlobalStyles";
 import Homepage from "./Routes/Homepage";
 import Header from "./Header";
@@ -7,10 +7,10 @@ import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import Artist from "./Routes/Artist";
 import Purchaser from "./Routes/Purchaser";
-
 import ViewArt from "./Routes/ViewArt";
 import RegistrationForm from "./Forms/RegistrationForm";
 import SignIn from "./Forms/SignIn";
+import Missing from "./Utilities/Missing"
 
 const App = () => {
   return (
@@ -19,29 +19,22 @@ const App = () => {
       <Header />
       <Main>
         <Sidebar />
-        <Switch>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
-          <Route exact path="/view-art">
-            <ViewArt />
-          </Route>
-          <Route exact path="/artist">
-            <Artist />
-          </Route>
-          <Route exact path="/purchaser">
-            <Purchaser />
-          </Route>
-          {/* <Route exact path="/curator">
-            <Curator />
-          </Route> */}
-          <Route exact path="/register">
-            <RegistrationForm />
-          </Route>
-          <Route exact path="/signIn">
-            <SignIn />
-          </Route>
-        </Switch>      
+        <Routes>
+          {/* public routes */}
+          <Route exact path="/" element={<Homepage />} />
+          <Route exact path="/register" element={<RegistrationForm />}/>
+          <Route exact path="/signIn" element={<SignIn />}/>
+          <Route exact path="/view-art" element={<ViewArt />}/>
+
+          {/* protected artist*/}          
+          <Route exact path="/artist" element={<Artist />}/>
+
+          {/* protected buyer*/} 
+          <Route exact path="/purchaser" element={<Purchaser />}/>
+
+          {/* catch all */}
+          <Route path="*" element={<Missing />}/>          
+        </Routes>      
       </Main>
       <Footer />
     </BrowserRouter>

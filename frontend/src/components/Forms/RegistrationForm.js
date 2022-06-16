@@ -1,7 +1,28 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useContext} from "react";
+import { MainContext } from "../context/MainContext";
 
 const RegistrationForm = () => {
+
+  const userRef = useRef();
+  const {user, setUser} = useContext(MainContext)
+  console.log(user)
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, [])
+
+  const handleInput = (event) => {
+    
+    const value = event.target.type === "checkbox" 
+    ? event.target.checked
+    : event.target.value;
+
+    setUser({
+      ...user,
+      [event.target.name]: value
+    })
+  };
 
   const Register = (event) => {
     event.preventDefault();
@@ -15,23 +36,91 @@ const RegistrationForm = () => {
         <FormContent>
           <FormGroup>
             <h4>Account Type:</h4>
-              <StyledRadioInput type="radio" id="artist" name="account_type" value="HTML"/>
-              <label for="artist">Artist</label>
-              <StyledRadioInput type="radio" id="buyer" name="account_type" value="HTML"/>
-              <label for="buyer">Purchaser</label>
+              <FormGroup>
+                <StyledRadioInput
+                  onChange={handleInput}  
+                  type="checkbox" 
+                  name="artist"                   
+                  checked={user.artist}
+                  value
+                />
+                <label for="artist">Artist</label>
+              </FormGroup>
+
+              <FormGroup>
+                <StyledRadioInput
+                  onChange={handleInput}  
+                  type="checkbox" 
+                  name="purchaser"
+                  checked={user.purchaser}
+                  value=""
+                />
+                <label for="artist">Purchaser</label>
+              </FormGroup>              
           </FormGroup>
 
           <FormGroup>
-            <StyledInputs name="givenName" type="text" placeholder="First name" required/>
-            <StyledInputs name="surname" type="text" placeholder="Last name" required/>
-          </FormGroup>
-
-            <StyledInputs name="email" type="email" placeholder="email @" required/>        
-            <StyledInputs name="password" type="password" placeholder="Password" minLength="8"
+            <label htmlfor="givenName">Given Name:</label>
+            <StyledInputs
+              onChange={handleInput}
+              ref={userRef} 
+              name="givenName"
+              type="text" 
+              placeholder="First name" 
+              value={user.givenName}
               required
             />
-            <StyledInputs name="confirmPass" type="password" placeholder="Confirm Password" minLength="8" required
-            />        
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="surname">Surname:</label>
+            <StyledInputs
+                onChange={handleInput} 
+                name="surname"
+                type="text" 
+                placeholder="Last name"
+                value={user.surname} 
+                required
+              />
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="email">Email:</label>
+            <StyledInputs
+                onChange={handleInput} 
+                name = "email"
+                type="email" 
+                placeholder="email @"
+                value={user.email} 
+                required
+              /> 
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="password">Password:</label>
+            <StyledInputs
+                onChange={handleInput} 
+                name="password"
+                type="password" 
+                placeholder="Password" 
+                minLength="8"
+                value={user.password}
+                required
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="confirmPass">Confirm Password:</label>
+            <StyledInputs
+                onChange={handleInput} 
+                name="confirmPass"
+                type="password" 
+                placeholder="Confirm Password" 
+                minLength="8" 
+                value={user.confirmPass}
+                required
+              /> 
+          </FormGroup>       
         </FormContent>
         <SubmitButton type="submit" disabled>Submit</SubmitButton>
       </MinorWrapper>   
@@ -67,7 +156,7 @@ export const MinorWrapper = styled.div`
   border: 2px solid var(--color-sunsetOrange);
   border-radius: 5px;
   padding: 4px;
-  width: 35vw;
+  width: 25vw;
   background-color: rgba(62, 29, 19, 0.2);
 `;
 
@@ -76,17 +165,15 @@ export const FormContent = styled.div`
   width: 100%;
 `;
 
-const FormGroup = styled.div`
+export const FormGroup = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  > div {
-    flex: 1 0 auto;
-    width: 48%;
-    &:first-child {
-      margin-right: 6px;
-    }
+  label{
+    margin: 5px;
+    padding: 3px;
+    width:25%;
   }
 `;
 
@@ -98,7 +185,7 @@ export const StyledInputs = styled.input`
     font-size: 15px;
     font-weight: 300;
     height: 36px;
-    width: 100%;
+    width: 70%;
     padding: 8px 12px 10px 12px;
     margin: 0px 1px 5px 0px;    
     &::placeholder {
@@ -113,10 +200,10 @@ const StyledRadioInput = styled.input`
 export const SubmitButton = styled.button`
   display: block;
   height: 36px;
-  width: 100%;
+  width: 30%;
   margin: 0 16px 0;
   border-radius: 5px;
-    border: 1px solid var(--color-mediumTurquoise);
-    box-sizing: border-box;
+  border: 1px solid var(--color-mediumTurquoise);
+  box-sizing: border-box;
 `;
 export default RegistrationForm
