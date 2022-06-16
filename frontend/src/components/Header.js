@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FcSearch } from "react-icons/fc"
-
+import Logo from "./assets/Logo.png"
 import { Link } from "react-router-dom";
 import Logout from "./Utilities/Logout";
 
@@ -8,8 +8,9 @@ import Logout from "./Utilities/Logout";
 const Header = () => {
   return (
     <Wrapper>
+      
       <StyledLink to="/">
-        <h1>The Art Place</h1>
+        <LogoIcon src={Logo} alt="The Art Place"/>
       </StyledLink>      
       <EndWrapper>
         <SearchBarWrapper hidden>
@@ -35,16 +36,13 @@ const Wrapper = styled.div`
   background-color: var(--color-cedar);
   border-bottom: 3px solid var(--color-mediumTurquoise);
   padding: 5px;
+  height: 13vh;
   h1{
     color: white;
     padding: 2px;
-    &:hover{
-    color: var(--color-mediumTurquoise);
-    border: 2px inset var(--color-sunsetOrange);
-    border-radius: 5px;
-    height: 55px;
+
   }
-  }
+  
 `
 
 const EndWrapper = styled.div`
@@ -61,6 +59,10 @@ const SearchBarWrapper = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   margin: 5px;
-`; 
+`;
+
+const LogoIcon = styled.img`
+  height: 100px;
+`;
 
 export default Header
