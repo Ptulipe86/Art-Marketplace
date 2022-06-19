@@ -10,13 +10,9 @@ export const MainContextProvider = ({children}) => {
     artist: false,
     purchaser: false,
     password:"",
-    confirmPass: ""
+    confirmPass: "",
+    avatarUrl: ""
   });
-
-
-
-
-
 
   return(
     <MainContext.Provider value={{

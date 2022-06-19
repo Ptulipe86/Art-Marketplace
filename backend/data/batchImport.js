@@ -9,7 +9,7 @@ const options = {
 
 
 const { usersdata } = require("./usersdata");
-const { v4: uuidv4 } = require("uuid");
+
   console.log(usersdata)
 const batchImport = async () => {
   const client = new MongoClient(MONGO_URI, options); 

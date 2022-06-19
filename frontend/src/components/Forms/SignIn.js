@@ -5,18 +5,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Signin = () => {
   
-  const navigate = useNavigate();
-  const location = useLocation();
+  const userRef = useRef();
 
-  
 
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  
-
-  // useEffect(() => {
-  //   userRef.current.focus();
-  // }, [])
+  useEffect(() => {
+    userRef.current.focus();
+  }, [])
 
 
   const handleSubmit = (event) => {
@@ -32,10 +26,11 @@ const Signin = () => {
             <FormGroup>
               <label htmlFor="email">Email:</label>            
               <StyledInputs 
-                id="email"                
+                name="email"                
                 type="email" 
-                placeholder="email @" 
-                value={user}
+                placeholder="email @"
+                ref={userRef}  
+                // value=""
                 required
               />
             </FormGroup>
@@ -55,5 +50,7 @@ const Signin = () => {
       </FormWrapper>
     )
 };
+
+
 
 export default Signin

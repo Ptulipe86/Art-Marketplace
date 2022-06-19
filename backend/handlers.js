@@ -1,6 +1,7 @@
 const { MongoClient } = require("mongodb");
 
 require("dotenv").config();
+// const cloudinary = require("./utilities/cloudinary");
 const { MONGO_URI } = process.env;
 const options = {
   useNewUrlParser: true,

@@ -24,6 +24,8 @@ const RegistrationForm = () => {
     })
   };
 
+  // const previewFiles(file)
+
   const Register = (event) => {
     event.preventDefault();
     //todo fetch post 
@@ -34,6 +36,7 @@ const RegistrationForm = () => {
       <MinorWrapper>
         <h2>Create Account</h2>
         <FormContent>
+
           <FormGroup>
             <h4>Account Type:</h4>
               <FormGroup>
@@ -41,8 +44,7 @@ const RegistrationForm = () => {
                   onChange={handleInput}  
                   type="checkbox" 
                   name="artist"                   
-                  checked={user.artist}
-                  value
+                  checked={user.artist}                  
                 />
                 <label for="artist">Artist</label>
               </FormGroup>
@@ -52,8 +54,7 @@ const RegistrationForm = () => {
                   onChange={handleInput}  
                   type="checkbox" 
                   name="purchaser"
-                  checked={user.purchaser}
-                  value=""
+                  checked={user.purchaser}                  
                 />
                 <label for="artist">Purchaser</label>
               </FormGroup>              
@@ -130,6 +131,7 @@ const RegistrationForm = () => {
 
 export const FormWrapper = styled.form`
   display: flex;
+  flex-shrink: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -152,17 +154,19 @@ export const FormWrapper = styled.form`
 export const MinorWrapper = styled.div`
   display: inherit;
   flex-direction: column;
+  flex-shrink: 0;
+  flex-wrap: wrap;
   align-items: center;
   border: 2px solid var(--color-sunsetOrange);
   border-radius: 5px;
   padding: 4px;
-  width: 25vw;
+  width: 350px;
   background-color: rgba(62, 29, 19, 0.2);
 `;
 
 export const FormContent = styled.div`
   margin: 0 16px 0;
-  width: 100%;
+  width: 80%;
 `;
 
 export const FormGroup = styled.div`
@@ -176,6 +180,8 @@ export const FormGroup = styled.div`
     width:25%;
   }
 `;
+
+
 
 export const StyledInputs = styled.input`
     border-radius: 3px;

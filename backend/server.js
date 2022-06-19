@@ -1,22 +1,24 @@
 "use strict";
+require("dotenv").config()
 
 var express = require('express');
 const morgan = require("morgan");
-const {handleSignUp} = require("./handlers")
-
+const {handleSignUp} = require("./handlers");
+// const cloudinary = require("../backend/utilities/cloudinary");
 
 express()
-  // Below are methods that are included in express(). We chain them for convenience.
+
   // --------------------------------------------------------------------------------
-  // This will give us will log more info to the console. see https://www.npmjs.com/package/morgan
+
   .use(morgan("tiny"))
   .use(express.json())
-
+  .use(express.json({limit: '50mb'}))
+  .use(express.urlencoded({extended: true, limit: '50mb'}))
   // Any requests for static files will go into the public folder
   .use(express.static("public"))
 
   //*/--------------------          Endpoints          -------------------------///
-  .post("/signUp", handleSignUp)
+  .post("/register", handleSignUp)
 
 
   //*/--------------------          Endpoints          -------------------------///
