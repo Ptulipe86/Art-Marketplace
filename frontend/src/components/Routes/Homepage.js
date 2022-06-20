@@ -22,7 +22,9 @@ const WrapperBody = styled.div`
   display: inherit;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 90vh;
 `;
 
 export default Homepage

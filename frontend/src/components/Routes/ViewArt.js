@@ -1,5 +1,5 @@
 const ViewArt = () => {
-  //todo api for adding art to make large grid
+  
   
   return (
     <>

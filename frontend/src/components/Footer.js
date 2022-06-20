@@ -3,8 +3,6 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <Wrapper>
-      <h2>Contact Info</h2>
-      <p>Add info</p> 
     </Wrapper>
   )
 }

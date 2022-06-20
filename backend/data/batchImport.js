@@ -10,7 +10,7 @@ const options = {
 
 const { usersdata } = require("./usersdata");
 
-  console.log(usersdata)
+  
 const batchImport = async () => {
   const client = new MongoClient(MONGO_URI, options); 
 
@@ -21,7 +21,7 @@ const batchImport = async () => {
     const db = client.db("artMarketplace");
     
     const result = await db.collection("users").insertMany(usersdata);
-    console.log("Success flights added", usersdata)
+    console.log("Success these been added", result)
 
   } catch (err) {
     console.log(err.message)

@@ -1,9 +1,13 @@
 "use strict";
-require("dotenv").config()
 
 var express = require('express');
 const morgan = require("morgan");
-const {handleSignUp} = require("./handlers");
+const {
+  handleSignUp, 
+  getUsers, 
+  getUser,
+  handleLogIn
+} = require("./handlers");
 // const cloudinary = require("../backend/utilities/cloudinary");
 
 express()
@@ -18,7 +22,11 @@ express()
   .use(express.static("public"))
 
   //*/--------------------          Endpoints          -------------------------///
-  .post("/register", handleSignUp)
+  // all users 
+  .post("/api/register", handleSignUp)
+  .post("/api/logIn", handleLogIn)
+  .get("/api/users",  getUsers)  
+  .get("/api/users/:id", getUser)
 
 
   //*/--------------------          Endpoints          -------------------------///

@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { useState, useEffect, useRef, useContext} from "react";
+import { useEffect, useRef, useContext} from "react";
 import { MainContext } from "../context/MainContext";
+import {useNavigate} from "react-router-dom";
 
-const RegistrationForm = () => {
-
+const RegistrationForm = () => {  
   const userRef = useRef();
-  const {user, setUser} = useContext(MainContext)
-  console.log(user)
-
   useEffect(() => {
     userRef.current.focus();
   }, [])
+
+  const {user, setUser, setCurrentUser} = useContext(MainContext)
+  let navigate = useNavigate();
 
   const handleInput = (event) => {
     
@@ -22,14 +22,55 @@ const RegistrationForm = () => {
       ...user,
       [event.target.name]: value
     })
-  };
-
-  // const previewFiles(file)
+  };  
 
   const Register = (event) => {
     event.preventDefault();
-    //todo fetch post 
-  }
+    
+    fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({
+        artist: user.artist,
+        purchaser: user.purchaser,
+        givenName: user.givenName,
+        surname: user.surname,
+        email: user.email,
+        password: user.confirmPass,
+        avatarUrl: user.avatarUrl,
+        bio: user.bio,
+        collection: user.collection        
+      })
+    })
+    .then(res =>  res.json())
+    .then(data => {
+      if (data.status === 201 && user.artist === true && user.purchaser === false) {
+        
+        console.log(`Success: ${data.data}, account has now been created`)
+        setCurrentUser(data.data)
+        window.alert("Success! Your account has been created.. redirecting you to your profile.")
+        navigate(`/artist/${data.data}`)
+
+      } else if (data.status === 201 && user.purchaser === true && user.artist === false){
+        
+        console.log(`Success: ${data.data}, account has now been created`)
+        setCurrentUser(data.data)
+        window.alert("Success! Your account has been created.. redirecting you to your profile.")
+        navigate(`/purchaser/${data.data}`)
+
+      } else if (data.status === 400){
+
+        console.log(data.data.message)
+        window.alert(data.data.message)
+      }
+    })
+    .catch(error => {
+      console.error('Error', error)
+    })
+  };
 
   return (
     <FormWrapper onSubmit={Register}>
@@ -44,9 +85,10 @@ const RegistrationForm = () => {
                   onChange={handleInput}  
                   type="checkbox" 
                   name="artist"                   
-                  checked={user.artist}                  
+                  checked={user.artist}
+                  required={!user.purchaser}                  
                 />
-                <label for="artist">Artist</label>
+                <label htmlFor="artist">Artist</label>
               </FormGroup>
 
               <FormGroup>
@@ -54,14 +96,15 @@ const RegistrationForm = () => {
                   onChange={handleInput}  
                   type="checkbox" 
                   name="purchaser"
-                  checked={user.purchaser}                  
+                  checked={user.purchaser}
+                  required={!user.artist}                  
                 />
-                <label for="artist">Purchaser</label>
+                <label htmlFor="purchaser">Purchaser</label>
               </FormGroup>              
           </FormGroup>
 
           <FormGroup>
-            <label htmlfor="givenName">Given Name:</label>
+            <label htmlFor="givenName">Given Name:</label>
             <StyledInputs
               onChange={handleInput}
               ref={userRef} 
@@ -123,7 +166,7 @@ const RegistrationForm = () => {
               /> 
           </FormGroup>       
         </FormContent>
-        <SubmitButton type="submit" disabled>Submit</SubmitButton>
+        <SubmitButton type="submit" >Submit</SubmitButton>
       </MinorWrapper>   
     </FormWrapper>
   )
@@ -180,8 +223,6 @@ export const FormGroup = styled.div`
     width:25%;
   }
 `;
-
-
 
 export const StyledInputs = styled.input`
     border-radius: 3px;

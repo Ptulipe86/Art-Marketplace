@@ -68,7 +68,7 @@ const HeroSlider = () => {
 
 const Images = styled.img`
   width: 100vw;
-  height: 81.2vh;
+  height: 82vh;
   border-top: 3px solid var(--color-mediumTurquoise);
   border-bottom: 3px solid var(--color-mediumTurquoise);
 `;

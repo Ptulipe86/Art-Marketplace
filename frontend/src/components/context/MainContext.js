@@ -1,4 +1,5 @@
-import { useContext, useState, createContext } from "react";
+import { useState, createContext } from "react";
+import useLocalStorage from "../Utilities/useLocalStorage";
 
 export const MainContext = createContext();
 
@@ -11,12 +12,17 @@ export const MainContextProvider = ({children}) => {
     purchaser: false,
     password:"",
     confirmPass: "",
-    avatarUrl: ""
+    avatarUrl: "",
+    bio: "",
+    collection: []
   });
+  
+  const [currentUser, setCurrentUser] = useLocalStorage("Current user:", null);
 
   return(
     <MainContext.Provider value={{
       user, setUser,
+      currentUser, setCurrentUser,      
     }}>
       {children}
     </MainContext.Provider>

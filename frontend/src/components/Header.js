@@ -3,26 +3,39 @@ import { FcSearch } from "react-icons/fc"
 import Logo from "./assets/Logo.png"
 import { Link } from "react-router-dom";
 import Logout from "./Utilities/Logout";
-
+import { useContext } from "react";
+import { MainContext } from "./context/MainContext";
 
 const Header = () => {
+
+  const {currentUser} = useContext(MainContext)
+  
   return (
     <Wrapper>
-      
+
       <StyledLink to="/">
         <LogoIcon src={Logo} alt="The Art Place"/>
-      </StyledLink>      
+      </StyledLink> 
+      
       <EndWrapper>
-        <SearchBarWrapper hidden>
-          <FcSearch/><input placeholder="Search artists,gallery,etc... "/>
-        </SearchBarWrapper>
-        <StyledLink to="/signIn">
-          <button>Log in</button>
-        </StyledLink>
-        <StyledLink to="/register">
-          <button>Sign Up</button>
-        </StyledLink>        
-          <Logout />                     
+        {currentUser && (
+          <>
+            <SearchBarWrapper>
+              <FcSearch/><input placeholder="Search artists,gallery,etc... "/>
+            </SearchBarWrapper>
+            <Logout />
+          </>
+        )}
+        {currentUser === null && (
+          <>
+            <StyledLink to="/signIn">
+              <button>Log in</button>
+            </StyledLink>
+            <StyledLink to="/register">
+              <button>Sign Up</button>
+            </StyledLink> 
+          </>
+        )}
       </EndWrapper> 
     </Wrapper>
   )

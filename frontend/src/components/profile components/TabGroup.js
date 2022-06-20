@@ -4,7 +4,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
 
-const TabGroup = () => {
+const TabGroup = ({artistCollection, purchaserCollection}) => {
     const [key, setKey] = useState('home');
 
     return (
