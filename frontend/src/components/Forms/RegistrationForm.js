@@ -50,7 +50,7 @@ const RegistrationForm = () => {
       if (data.status === 201 && user.artist === true && user.purchaser === false) {
         
         console.log(`Success: ${data.data}, account has now been created`)
-        setCurrentUser(data.data)
+        setCurrentUser([data.data, user.artist, user.purchaser])
         window.alert("Success! Your account has been created.. redirecting you to your profile.")
         navigate(`/artist/${data.data}`)
 
@@ -73,104 +73,112 @@ const RegistrationForm = () => {
   };
 
   return (
-    <FormWrapper onSubmit={Register}>
-      <MinorWrapper>
-        <h2>Create Account</h2>
-        <FormContent>
+    <FormMainWrapper>      
+      <FormWrapper onSubmit={Register}>
+        <MinorWrapper>
+          <h2>Create Account</h2>
+          <FormContent>
 
-          <FormGroup>
-            <h4>Account Type:</h4>
-              <FormGroup>
-                <StyledRadioInput
-                  onChange={handleInput}  
-                  type="checkbox" 
-                  name="artist"                   
-                  checked={user.artist}
-                  required={!user.purchaser}                  
-                />
-                <label htmlFor="artist">Artist</label>
-              </FormGroup>
+            <FormGroup>
+              <h4>Account Type:</h4>
+                <FormGroup>
+                  <StyledRadioInput
+                    onChange={handleInput}  
+                    type="checkbox" 
+                    name="artist"                   
+                    checked={user.artist}
+                    required={!user.purchaser}                  
+                  />
+                  <label htmlFor="artist">Artist</label>
+                </FormGroup>
 
-              <FormGroup>
-                <StyledRadioInput
-                  onChange={handleInput}  
-                  type="checkbox" 
-                  name="purchaser"
-                  checked={user.purchaser}
-                  required={!user.artist}                  
-                />
-                <label htmlFor="purchaser">Purchaser</label>
-              </FormGroup>              
-          </FormGroup>
+                <FormGroup>
+                  <StyledRadioInput
+                    onChange={handleInput}  
+                    type="checkbox" 
+                    name="purchaser"
+                    checked={user.purchaser}
+                    required={!user.artist}                  
+                  />
+                  <label htmlFor="purchaser">Purchaser</label>
+                </FormGroup>              
+            </FormGroup>
 
-          <FormGroup>
-            <label htmlFor="givenName">Given Name:</label>
-            <StyledInputs
-              onChange={handleInput}
-              ref={userRef} 
-              name="givenName"
-              type="text" 
-              placeholder="First name" 
-              value={user.givenName}
-              required
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <label htmlFor="surname">Surname:</label>
-            <StyledInputs
-                onChange={handleInput} 
-                name="surname"
+            <FormGroup>
+              <label htmlFor="givenName">Given Name:</label>
+              <StyledInputs
+                onChange={handleInput}
+                ref={userRef} 
+                name="givenName"
                 type="text" 
-                placeholder="Last name"
-                value={user.surname} 
+                placeholder="First name" 
+                value={user.givenName}
                 required
               />
-          </FormGroup>
+            </FormGroup>
 
-          <FormGroup>
-            <label htmlFor="email">Email:</label>
-            <StyledInputs
-                onChange={handleInput} 
-                name = "email"
-                type="email" 
-                placeholder="email @"
-                value={user.email} 
-                required
-              /> 
-          </FormGroup>
+            <FormGroup>
+              <label htmlFor="surname">Surname:</label>
+              <StyledInputs
+                  onChange={handleInput} 
+                  name="surname"
+                  type="text" 
+                  placeholder="Last name"
+                  value={user.surname} 
+                  required
+                />
+            </FormGroup>
 
-          <FormGroup>
-            <label htmlFor="password">Password:</label>
-            <StyledInputs
-                onChange={handleInput} 
-                name="password"
-                type="password" 
-                placeholder="Password" 
-                minLength="8"
-                value={user.password}
-                required
-            />
-          </FormGroup>
+            <FormGroup>
+              <label htmlFor="email">Email:</label>
+              <StyledInputs
+                  onChange={handleInput} 
+                  name = "email"
+                  type="email" 
+                  placeholder="email @"
+                  value={user.email} 
+                  required
+                /> 
+            </FormGroup>
 
-          <FormGroup>
-            <label htmlFor="confirmPass">Confirm Password:</label>
-            <StyledInputs
-                onChange={handleInput} 
-                name="confirmPass"
-                type="password" 
-                placeholder="Confirm Password" 
-                minLength="8" 
-                value={user.confirmPass}
-                required
-              /> 
-          </FormGroup>       
-        </FormContent>
-        <SubmitButton type="submit" >Submit</SubmitButton>
-      </MinorWrapper>   
-    </FormWrapper>
+            <FormGroup>
+              <label htmlFor="password">Password:</label>
+              <StyledInputs
+                  onChange={handleInput} 
+                  name="password"
+                  type="password" 
+                  placeholder="Password" 
+                  minLength="8"
+                  value={user.password}
+                  required
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <label htmlFor="confirmPass">Confirm Password:</label>
+              <StyledInputs
+                  onChange={handleInput} 
+                  name="confirmPass"
+                  type="password" 
+                  placeholder="Confirm Password" 
+                  minLength="8" 
+                  value={user.confirmPass}
+                  required
+                /> 
+            </FormGroup>       
+          </FormContent>
+          <SubmitButton type="submit" >Submit</SubmitButton>
+        </MinorWrapper>   
+      </FormWrapper>
+    </FormMainWrapper>
   )
 };
+
+export const FormMainWrapper = styled.div`
+  width: 100%;
+  height: 80vh;
+  background: var(--gradient);
+`;
 
 export const FormWrapper = styled.form`
   display: flex;
@@ -181,7 +189,6 @@ export const FormWrapper = styled.form`
   width: 100%;
   height: 100%;
   padding: 5px;
-  background: var(--gradient);
   h2{
     text-align: center;
     background-color: var(--color-cedar);

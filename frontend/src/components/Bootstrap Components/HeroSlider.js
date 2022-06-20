@@ -5,6 +5,7 @@ import demo3 from "../assets/personal_collection.jpg";
 import { GiTrafficCone } from "react-icons/gi";
 import { IconContext } from 'react-icons/lib';
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 const HeroSlider = () => {
   return(
@@ -41,23 +42,6 @@ const HeroSlider = () => {
                   Find your new favorite artist. Add your favorite 
                   piece to the shopping cart. And your good to go!</p>
               <p>Register now and then sign in to start!</p>
-            </MiniWrapper>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <Images            
-            src={demo3}
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <MiniWrapper>
-              <h2>Gallery</h2>
-              <p></p>
-              <IconContext.Provider value={{color: "var(--color-sunsetOrange)", size:"2em"}}>
-                <span>Under construction.. <GiTrafficCone/></span>
-              </IconContext.Provider>
-              
             </MiniWrapper>
           </Carousel.Caption>
         </Carousel.Item>

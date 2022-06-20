@@ -6,7 +6,8 @@ const {
   handleSignUp, 
   getUsers, 
   getUser,
-  handleLogIn
+  handleLogIn,
+  updateCollection
 } = require("./handlers");
 // const cloudinary = require("../backend/utilities/cloudinary");
 
@@ -27,7 +28,7 @@ express()
   .post("/api/logIn", handleLogIn)
   .get("/api/users",  getUsers)  
   .get("/api/users/:id", getUser)
-
+  .patch("/api/users/:id", updateCollection)
 
   //*/--------------------          Endpoints          -------------------------///
 

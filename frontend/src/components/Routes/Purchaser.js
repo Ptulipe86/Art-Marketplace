@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import TabGroup from "../Profile components/TabGroup";
 import { useEffect, useState, useContext } from "react";
 import {useParams} from "react-router-dom";
-import { Wrapper, UserInfoSection,ProfileImgWrapper,ProfileAvatar} from "./Artist";
+import { Wrapper, UserInfoSection,ProfileImgWrapper,ProfileAvatar, CollectionWrapper} from "./Artist";
 import { MainContext } from "../context/MainContext";
+import Cards from "../gallery components/Cards";
 
 const Purchaser = () => {
 
@@ -32,11 +32,35 @@ const Purchaser = () => {
           </div>
         </ProfileImgWrapper>
       </UserInfoSection>
-      <div>
-      <TabGroup purchaserCollection ={purchaserInfo.collection}/>
-      </div>
+      <h3>Current Collection</h3>
+      <CollectionWrapper>
+      
+      {purchaserInfo && purchaserInfo.collection.map(artInfo => {
+          return (
+            <Collection>
+              <Cards 
+                    artist={purchaserInfo.artist === true ? `${purchaserInfo.surname}, ${purchaserInfo.givenName}`: "unknown"}
+                    name={artInfo.name}
+                    description={artInfo.description}
+                    price={artInfo.Price}
+                    isSold={artInfo.isSold}
+                    url={artInfo.url}
+                    tags={artInfo.tags}
+              />
+            </Collection>
+          )
+      })}
+      
+      </CollectionWrapper>
+      {/* <TabGroup purchaserCollection ={purchaserInfo}/> */}
     </Wrapper>
   )
 };
+
+const Collection = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+`;
 
 export default Purchaser

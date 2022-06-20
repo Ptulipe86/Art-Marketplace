@@ -1,5 +1,5 @@
 import { useState, createContext } from "react";
-import useLocalStorage from "../Utilities/useLocalStorage";
+import useLocalStorage from "../utilities/useLocalStorage";
 
 export const MainContext = createContext();
 
@@ -18,11 +18,15 @@ export const MainContextProvider = ({children}) => {
   });
   
   const [currentUser, setCurrentUser] = useLocalStorage("Current user:", null);
+  const [status, setStatus] = useState("loading");
+  const [addToCart, setAddToCart] = useState(0);
 
   return(
     <MainContext.Provider value={{
       user, setUser,
-      currentUser, setCurrentUser,      
+      currentUser, setCurrentUser,
+      status, setStatus,
+      addToCart, setAddToCart      
     }}>
       {children}
     </MainContext.Provider>

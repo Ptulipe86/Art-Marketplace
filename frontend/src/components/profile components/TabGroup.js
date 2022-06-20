@@ -1,12 +1,15 @@
 import { useState } from "react";
-// import styled from "styled-components";
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import styled from "styled-components";
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import { useContext } from "react";
+import { MainContext } from "../context/MainContext";
+import Cards from "../gallery components/Cards";
 
-
-const TabGroup = ({artistCollection, purchaserCollection}) => {
+const TabGroup = ({artistInfo, purchaserCollection}) => {
+    
     const [key, setKey] = useState('home');
-
+    
     return (
         <Tabs
         id="controlled-tab-example"
@@ -15,10 +18,18 @@ const TabGroup = ({artistCollection, purchaserCollection}) => {
         className="mb-3"
         >
         <Tab eventKey="home" title="Overview">
-            <p>add slide of current pieces</p>
+           <div>            
+            {/* {artistInfo.collection.map(artInfo => {
+                return(
+                    <>
+                        
+                    </>
+                )
+            })} */}
+           </div>
         </Tab>
         <Tab eventKey="profile" title="For Sale">
-            <p>make a image grid</p>
+            <p>sold items</p>
         </Tab>
         </Tabs>
     );

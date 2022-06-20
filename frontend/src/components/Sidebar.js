@@ -2,35 +2,47 @@ import styled from 'styled-components';
 import { FaRegUser,FaSearchDollar } from "react-icons/fa";
 import { MdAttachMoney, MdImageSearch } from "react-icons/md";
 import { GiShoppingCart } from "react-icons/gi";
-import { useContext, useEffect } from 'react';
+import { useContext} from 'react';
 import { MainContext } from "./context/MainContext";
-import { Link, useParams } from 'react-router-dom';
-import Artist from "./Routes/Artist";
+import { Link} from 'react-router-dom';
+import { IconContext } from 'react-icons/lib';
 
 const Sidebar = () => {  
+
+  const {currentUser, addToCart} = useContext(MainContext);
 
   return (
     <Main >
       <h2>Welcome!</h2>
       <Wrapper>
         <UsersWrapper>
-          <ArtistButtonsWrapper>
-            {/* <StyledLink to={<Artist />}>
-              <button><FaRegUser/>Profile</button>
-            </StyledLink> */}
-            {/* <StyledLink to="/sell">
-              <button><MdAttachMoney/>Sell</button>
-            </StyledLink> */}
-          </ArtistButtonsWrapper>
-
-          <BuyersButtonsWrapper>
-            {/* <StyledLink to="/purchaser/:id">
-              <button><GiShoppingCart/>Purchase</button>
-            </StyledLink> */}
             <StyledLink to="/view-art">
               <button><MdImageSearch/>View Art</button>
             </StyledLink>
-          </BuyersButtonsWrapper>
+            {currentUser[2] === true
+              ?<StyledLink to={`/artist/${currentUser[0]}`}>
+              <button><FaRegUser/>Profile</button>
+            </StyledLink>
+              :<></>
+            }
+            {currentUser[4] === true && (
+                <>
+                  <StyledLink to={`/purchaser/${currentUser[0]}`}>
+                  <button><FaRegUser/>Profile</button>
+                  </StyledLink>
+
+                  <ShoppingCart>
+                    <IconContext.Provider value={{size: "2em"}}>
+                      <GiShoppingCart/>
+                    </IconContext.Provider>
+                    {addToCart}
+                  </ShoppingCart>                
+                </>
+              )
+            }
+
+
+          
         </UsersWrapper>       
       </Wrapper>
     </Main>
@@ -61,14 +73,11 @@ const UsersWrapper = styled.div`
   flex-direction: column;
 `;
 
-const ArtistButtonsWrapper = styled.div`
-  display: inherit;
-  flex-direction: inherit;
-`;
-
-const BuyersButtonsWrapper = styled.div`
-  display: inherit;
-  flex-direction: inherit;
+const ShoppingCart = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 `;
 
 const StyledLink = styled(Link)`

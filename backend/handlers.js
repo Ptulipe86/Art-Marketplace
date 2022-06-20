@@ -14,17 +14,13 @@ const { v4: uuidv4 } = require("uuid");
 
 const getUsers = async (req,res) => {
   const client = new MongoClient(MONGO_URI, options);
-
+  
   try {
     await client.connect()
     console.log("connected!");
     const db = client.db(dbname);
 
-    const usersArr = await db.collection("users").find().toArray();
-    console.log(usersArr)
-    const result = usersArr.map(element => {
-      return element._id
-    })
+    const result = await db.collection("users").find().toArray();
 
     res.status(200).json({ status:200, data:result, message:"Success!"})
     
@@ -127,9 +123,43 @@ const handleLogIn = async (req,res) => {
   console.log("disconnected!")
 };
 
+const updateCollection = async (req,res) => {
+  const client = new MongoClient(MONGO_URI, options);
+  const {id} = req.params;
+  const user = {_id:id, ...req.body}
+
+  try {
+    await client.connect();
+    console.log("connected!");        
+    const db = client.db(dbname);
+
+    const oldUser = await db.collection("users").findOne({_id: user._id})
+    console.log(oldUser)
+    // if (!oldCollection) {
+    //   res.status(404).json({ status: 404, Info: collection._id, message:"That doesn't exist, please try another." }); 
+    // } else {
+      
+    //   const update = await db.collection("users").updateOne({_id: oldCollection._id}, { $set: {...req.body}})
+    //   console.log(update)
+
+    res.status(200).json({status:200, oldUser})
+    // }
+    
+    client.close();  
+    console.log("disconnected!");
+
+  } catch (error) {
+    console.log(error.stack)
+    res.status(409).json({ status: 409, message:"Conflict on updating collection"})
+  }
+
+};
+
+
 module.exports = {
   getUsers,
   getUser,
   handleSignUp,
   handleLogIn,
+  updateCollection
 }

@@ -1,5 +1,5 @@
 // import styled from "styled-components";
-import {FormWrapper, MinorWrapper, FormContent, StyledInputs, SubmitButton,FormGroup} from "./RegistrationForm";
+import {FormWrapper, MinorWrapper, FormContent, StyledInputs, SubmitButton,FormGroup,FormMainWrapper} from "./RegistrationForm";
 import { useRef, useEffect, useContext } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { MainContext } from "../context/MainContext";
@@ -47,13 +47,13 @@ const Signin = () => {
       } else if (data.status === 200 && data.Artist === true && data.Purchaser === false) {
         
         console.log(`Success: ${data.data}, account was found.`)
-        setCurrentUser(data.data)
+        setCurrentUser([data.data, `Artist: ${data.Artist}`, data.Artist, `Purchaser: ${data.Purchaser}`, data.Purchaser])
         window.alert(data.message)
         navigate(`/artist/${data.data}`)
       } else if (data.status === 200 && data.Artist === false && data.Purchaser === true) {
         
         console.log(`Success: ${data.data}, account was found.`)
-        setCurrentUser(data.data)
+        setCurrentUser([data.data, `Artist: ${data.Artist}`, data.Artist, `Purchaser: ${data.Purchaser}`, data.Purchaser])
         window.alert(data.message)
         navigate(`/purchaser/${data.data}`)
       } 
@@ -61,38 +61,40 @@ const Signin = () => {
   };
 
     return(
-      <FormWrapper onSubmit={handleLogIn}>
-        <MinorWrapper>
-          <h2>Sign in</h2>
-          <FormContent>
-            <FormGroup>
-              <label htmlFor="email">Email:</label>            
-              <StyledInputs 
-                name="email"                
-                type="email" 
-                placeholder="email @"
-                ref={userRef}
-                value={user.email}
-                onChange={handleInput}
-                required
-              />
-            </FormGroup>
-            <FormGroup>
-              <label htmlFor="password">Password:</label>
-              <StyledInputs 
-                name="password"
-                type="password" 
-                placeholder="Password" 
-                minLength="8"
-                value={user.password}
-                onChange={handleInput}
-                required
-              />
-            </FormGroup>             
-          </FormContent>
-          <SubmitButton type="submit">Log in</SubmitButton>
-        </MinorWrapper>        
-      </FormWrapper>
+      <FormMainWrapper>
+        <FormWrapper onSubmit={handleLogIn}>
+          <MinorWrapper>
+            <h2>Sign in</h2>
+            <FormContent>
+              <FormGroup>
+                <label htmlFor="email">Email:</label>            
+                <StyledInputs 
+                  name="email"                
+                  type="email" 
+                  placeholder="email @"
+                  ref={userRef}
+                  value={user.email}
+                  onChange={handleInput}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <label htmlFor="password">Password:</label>
+                <StyledInputs 
+                  name="password"
+                  type="password" 
+                  placeholder="Password" 
+                  minLength="8"
+                  value={user.password}
+                  onChange={handleInput}
+                  required
+                />
+              </FormGroup>             
+            </FormContent>
+            <SubmitButton type="submit">Log in</SubmitButton>
+          </MinorWrapper>        
+        </FormWrapper>
+      </FormMainWrapper>
     )
 };
 

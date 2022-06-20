@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FcSearch } from "react-icons/fc"
 import Logo from "./assets/Logo.png"
 import { Link } from "react-router-dom";
-import Logout from "./Utilities/Logout";
+import Logout from "./utilities/Logout";
 import { useContext } from "react";
 import { MainContext } from "./context/MainContext";
 
@@ -19,9 +19,9 @@ const Header = () => {
       
       <EndWrapper>
         {currentUser && (
-          <>
-            <SearchBarWrapper>
-              <FcSearch/><input placeholder="Search artists,gallery,etc... "/>
+          <>            
+            <SearchBarWrapper >
+              <FcSearch/><input placeholder="Search artists, paintings ... "/>
             </SearchBarWrapper>
             <Logout />
           </>
