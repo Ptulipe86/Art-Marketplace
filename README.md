@@ -8,7 +8,7 @@ Final Project From Concordia's Full Stack Web Development Program
 
 ## The App
 <br>
-For artists looking to expose they're work to a broaden audience. From monitoring sales, sales history. Adding detail descriptions of they're product. No middleman needed, just a couple clicks and you become your own household curator.
+For artists looking to expose they're work to broaden they're audience. From monitoring sales, sales history. Adding detail descriptions of they're product. No middleman needed, just a couple clicks and you become your own household curator.
 <br><br>
 
   > As an Artist = Admins of the app. Have access to sales/ sales history, profile ( name , quick bio, descriptive gallery to display they're current pieces for sale and passed sold as well). Gain access to the gallery and search field and capable of purchasing art themselves.
